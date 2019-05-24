@@ -1,0 +1,318 @@
+_author__ = "taurus"
+import math
+from math import trunc
+from math import ceil
+import tkinter as tk
+
+# main
+window = tk.Tk()
+window.title("Kalori Hesaplama")
+window.geometry("400x600")
+window.configure(bg =  "orange")
+
+# GUI title
+title1 = tk.Label(text = "KALORİ HESAPLAMA PROGRAMI", bg = "orange", fg ="black", font = "none 10 bold")
+title1.grid()
+
+title2 = tk.Label(text = "VÜCUT KİTLE İNDEKSİ",bg = "orange", fg ="black", font = "none 10 bold")
+title2.grid(column = 0, row = 13)
+title3 = tk.Label(text = "VÜCUT KİTLE İNDEKSİ ÖLÇÜTLERİ",bg = "orange", fg ="black", font = "none 10 bold")
+title3.grid(column = 0, row = 16)
+
+# Ana program
+
+def hesapla():    
+    cinsiyet = str(entry1.get())
+    yas = float(entry2.get())
+    boy = float(entry3.get())
+    kilo = float(entry4.get())
+
+    def gram_hesapla():
+        protein_miktari = ceil((protein / 4))
+        entry9.insert(0, protein_miktari)
+            
+        karbonhidrat_miktari = ceil((karbonhidrat / 4))
+        entry10.insert(0, karbonhidrat_miktari)
+            
+        yag_miktari = ceil((yag / 9))
+        entry11.insert(0, yag_miktari)        
+
+    #Vücut Kitle indeksi programı:
+        
+    def vki():
+        vucut_kitle_indeksi = (trunc((kilo/((boy/100)*(boy/100)))*100)/100)
+        entry12.insert(0, vucut_kitle_indeksi)
+
+
+        if (vucut_kitle_indeksi < 18.5):
+            sonuc = "Normalden hafif"
+            entry13.insert(0, sonuc)
+   
+        elif ((vucut_kitle_indeksi >= 18.5) and (vucut_kitle_indeksi <= 24.9)):
+            sonuc = "Normal kilo"
+            entry13.insert(0, sonuc)
+    
+        elif ((vucut_kitle_indeksi >= 25) and (vucut_kitle_indeksi <= 29.9)):
+            sonuc = "Kilolu"
+            entry13.insert(0, sonuc)    
+    
+        else:
+            sonuc = "Şişman"
+            entry13.insert(0, sonuc)
+    
+    # Kalori hesaplama programı:       
+
+    if((yas > 0) and (yas < 3)):
+        bebek = ceil((22.1 + (31.05*kilo) ) - (1.16*boy))
+        entry5.insert(0, bebek)
+        
+        protein = ceil((((bebek*0.15) + (bebek*0.20)) / 2))
+        entry6.insert(0, protein)
+        
+        karbonhidrat = ceil((((bebek*0.50) + (bebek*0.55)) / 2))
+        entry7.insert(0, karbonhidrat)
+        
+        yag = ceil((bebek*0.30))
+        entry8.insert(0, yag)
+
+        gram_hesapla()          
+    
+    elif((yas >= 3) and ( yas < 10)):
+        if(cinsiyet == 'erkek'):
+            erkek_cocuk = ceil(((22.7*kilo) + 651))
+            entry5.insert(0, erkek_cocuk)
+            
+            protein = ceil((((erkek_cocuk*0.15) + (erkek_cocuk*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((erkek_cocuk*0.50) + (erkek_cocuk*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((erkek_cocuk*0.30))
+            entry8.insert(0, yag)
+
+            gram_hesapla()
+
+            vki()
+                    
+        if(cinsiyet == 'kadın'):
+            kiz_cocuk = ceil(((22.5*kilo) + 499))
+            entry5.insert(0, kiz_cocuk)
+            
+            protein = ceil((((kiz_cocuk*0.15) + (kiz_cocuk*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((kiz_cocuk*0.50) + (kiz_cocuk*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((kiz_cocuk*0.30))
+            entry8.insert(0, yag)
+
+            gram_hesapla()
+
+            vki()
+
+    elif((yas >= 10) and (yas < 18)):
+        if(cinsiyet == 'erkek'):
+            genc_erkek = ceil(((17.5*kilo)+ 651))
+            entry5.insert(0, genc_erkek)
+            
+            protein = ceil((((genc_erkek*0.15) + (genc_erkek*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((genc_erkek*0.50) + (genc_erkek*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((genc_erkek*0.30))
+            entry8.insert(0, yag)
+            
+            gram_hesapla()
+
+            vki()
+        
+        if(cinsiyet == 'kadın'):
+            genc_kadin= ceil(((12.2*kilo)+ 746))
+            entry5.insert(0, genc_kadin)
+            
+            protein = ceil((((genc_kadin*0.15) + (genc_kadin*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((genc_kadin*0.50) + (genc_kadin*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((genc_kadin*0.30))
+            entry8.insert(0, yag)
+
+            gram_hesapla()
+
+            vki()
+    
+    elif(yas >= 18):
+        if(cinsiyet == 'erkek'):
+            yetiskin_erkek = ceil(((66.5 + (13.75*kilo)) + ((5.0*boy) - (6.77*yas))))
+            entry5.insert(0, yetiskin_erkek)
+            
+            protein = ceil((((yetiskin_erkek*0.15) + (yetiskin_erkek*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((yetiskin_erkek*0.50) + (yetiskin_erkek*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((yetiskin_erkek*0.30))
+            entry8.insert(0, yag)
+
+            gram_hesapla()
+
+            vki()
+                       
+        if(cinsiyet == 'kadın'):
+            yetiskin_kadin = ceil(((655.1 + (9.56*kilo)) + ((1.85*boy) - (4.67*yas))))
+            entry5.insert(0, yetiskin_kadin)
+            
+            protein = ceil((((yetiskin_kadin*0.15) + (yetiskin_kadin*0.20)) / 2))
+            entry6.insert(0, protein)
+            
+            karbonhidrat = ceil((((yetiskin_kadin*0.50) + (yetiskin_kadin*0.55)) / 2))
+            entry7.insert(0, karbonhidrat)
+            
+            yag = ceil((yetiskin_kadin*0.30))
+            entry8.insert(0, yag)
+            
+            gram_hesapla()
+
+            vki()
+
+    else:
+        pass 
+
+# verilerin girişi etiketleri
+
+label1 = tk.Label(text = "Cinsiyetiniz: ", bg = "orange", fg ="green", font = "none 10 bold" )
+label1.grid(column = 0, row = 1)
+
+label2 = tk.Label(text = "Yaşınız: ", bg = "orange", fg ="green", font = "none 10 bold")
+label2.grid(column = 0, row = 2)
+
+label3 = tk.Label(text = "Boy uzunluğunuz cm olarak: ", bg = "orange", fg ="green", font = "none 10 bold")
+label3.grid(column = 0, row = 3)
+
+label4 = tk.Label(text = "Ağırlığınız kilogram olarak: ", bg = "orange", fg ="green", font = "none 10 bold")
+label4.grid(column = 0, row = 4)
+
+# verilerin çıkıs etiketleri
+
+label5 = tk.Label(text = "Toplam Kalori: kcal", bg = "orange", fg ="green", font = "none 10 bold")
+label5.grid(column = 0, row = 6)
+
+label6 = tk.Label(text = "Protein: kcal", bg = "orange", fg ="green", font = "none 10 bold")
+label6.grid(column = 0, row = 7)
+
+label7 = tk.Label(text = "Karbonhidrat: kcal", bg = "orange", fg ="green", font = "none 10 bold")
+label7.grid(column = 0, row = 8)
+
+label8 = tk.Label(text = "Yag: kcal", bg = "orange", fg ="green", font = "none 10 bold")
+label8.grid(column = 0, row = 9)
+
+label9 = tk.Label(text = "Protein Miktarı: gram ", bg = "orange", fg ="green", font = "none 10 bold")
+label9.grid(column = 0, row = 10)
+
+label10 = tk.Label(text = "Karbonhidrat Miktarı: gram ", bg = "orange", fg ="green", font = "none 10 bold")
+label10.grid(column = 0, row = 11)
+
+label11 = tk.Label(text = "Yağ Miktarı: gram ", bg = "orange", fg ="green", font = "none 10 bold")
+label11.grid(column = 0, row = 12)
+
+label12 = tk.Label(text = "Vücut Kitle İndeksiniz: ", bg = "orange", fg ="green", font = "none 10 bold")
+label12.grid(column = 0, row = 14)
+
+label13 = tk.Label(text = "Sonuç", bg = "orange", fg ="green", font = "none 10 bold")
+label13.grid(column = 0, row = 15)
+
+label17 = tk.Label(text = "KATEGORİ", bg = "orange",fg ="black", font = "none 8 bold")
+label17.grid(column = 0, row = 17)
+
+label18 = tk.Label(text = "VKİ ARALIKLARI",bg = "orange",fg = "black",font = "none 8 bold")
+label18.grid(column = 1, row = 17)
+
+label19 = tk.Label(text = "Normalden Hafif",bg = "orange",fg = "black",font = "none 8 bold")
+label19.grid(column = 0, row = 18)
+
+label20 = tk.Label(text = "< 18.5",bg = "orange",fg = "black",font = "none 8 bold")
+label20.grid(column = 1, row = 18)
+
+label21 = tk.Label(text = "Normal Kilo",bg = "orange",fg = "black",font = "none 8 bold")
+label21.grid(column = 0, row = 19)
+
+label22 = tk.Label(text = "18.5 - 24.9",bg = "orange",fg = "black",font = "none 8 bold")
+label22.grid(column = 1, row = 19)
+
+label23 = tk.Label(text = "Kilolu",bg = "orange",fg = "black",font = "none 8 bold")
+label23.grid(column = 0, row = 20)
+
+label24 = tk.Label(text = "25 - 29.9",bg = "orange",fg = "black",font = "none 8 bold")
+label24.grid(column = 1, row = 20)
+
+label25 = tk.Label(text = "Şişman (Obez)",bg = "orange",fg = "black",font = "none 8 bold")
+label25.grid(column = 0, row = 21)
+
+label26 = tk.Label(text = ">= 30",bg = "orange",fg = "black",font = "none 8 bold")
+label26.grid(column = 1, row = 21)
+
+# veri giriş metin alanları
+
+entry1 = tk.Entry()
+entry1.grid(column = 1, row = 1)
+
+entry2 = tk.Entry()
+entry2.grid(column = 1, row = 2)
+
+entry3 = tk.Entry()
+entry3.grid(column = 1, row = 3)
+
+entry4 = tk.Entry()
+entry4.grid(column = 1, row = 4)
+
+# veri çıkış metin alanları
+
+entry5 = tk.Entry()
+entry5.grid(column = 1, row = 6)
+
+entry6 = tk.Entry()
+entry6.grid(column = 1, row = 7)
+
+entry7 = tk.Entry()
+entry7.grid(column = 1, row = 8)
+
+entry8 = tk.Entry()
+entry8.grid(column = 1, row = 9)
+
+entry9 = tk.Entry()
+entry9.grid(column = 1, row = 10)
+
+entry10 = tk.Entry()
+entry10.grid(column = 1, row = 11)
+
+entry11 = tk.Entry()
+entry11.grid(column = 1, row = 12)
+
+entry12 = tk.Entry()
+entry12.grid(column = 1, row = 14)
+
+entry13 = tk.Entry()
+entry13.grid(column = 1, row = 15)
+
+# hesaplama butonu program çalıştırma
+
+button1 = tk.Button(text = "HESAPLA", font = "none 8 bold",fg = "black", command = hesapla)
+button1.grid(column = 0, row = 5)    
+
+#fonksiyondan çıkış
+def close_window():
+    window.destroy()   
+    exit()
+
+# çıkış butonu
+button2 = tk.Button(text = "ÇIKIŞ",fg = "black", font = "none 8 bold", command = close_window)
+button2.grid(column = 0, row = 22)
+
+window.mainloop()
