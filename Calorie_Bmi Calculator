@@ -86,7 +86,7 @@ def calculate():
             carbohydrate = ceil((((boy*0.50) + (boy*0.55)) / 2))
             entry7.insert(0, carbohydrate)
             
-            oil = ceil(boy*0.30))
+            oil = ceil(boy*0.30)
             entry8.insert(0, oil)
             
             gram_calculate()
