@@ -227,34 +227,34 @@ label13 = tk.Label(text = "Result", bg = "orange", fg ="green", font = "none 10 
 label13.grid(column = 0, row = 15)
 
 label17 = tk.Label(text = "CATEGORY", bg = "orange",fg ="black", font = "none 8 bold")
-label17.grid(column = 0, row = 17)
+label17.grid(column = 0, row = 18)
 
 label18 = tk.Label(text = "BMI INTERVALS",bg = "orange",fg = "black",font = "none 8 bold")
-label18.grid(column = 1, row = 17)
+label18.grid(column = 1, row = 18)
 
 label19 = tk.Label(text = "Underweight",bg = "orange",fg = "black",font = "none 8 bold")
-label19.grid(column = 0, row = 18)
+label19.grid(column = 0, row = 19)
 
 label20 = tk.Label(text = "< 18.5",bg = "orange",fg = "black",font = "none 8 bold")
-label20.grid(column = 1, row = 18)
+label20.grid(column = 1, row = 19)
 
 label21 = tk.Label(text = "Normal weight",bg = "orange",fg = "black",font = "none 8 bold")
-label21.grid(column = 0, row = 19)
+label21.grid(column = 0, row = 20)
 
 label22 = tk.Label(text = "18.5 - 24.9",bg = "orange",fg = "black",font = "none 8 bold")
-label22.grid(column = 1, row = 19)
+label22.grid(column = 1, row = 20)
 
 label23 = tk.Label(text = "Overweight",bg = "orange",fg = "black",font = "none 8 bold")
-label23.grid(column = 0, row = 20)
+label23.grid(column = 0, row = 21)
 
 label24 = tk.Label(text = "25 - 29.9",bg = "orange",fg = "black",font = "none 8 bold")
-label24.grid(column = 1, row = 20)
+label24.grid(column = 1, row = 21)
 
 label25 = tk.Label(text = "Obese",bg = "orange",fg = "black",font = "none 8 bold")
-label25.grid(column = 0, row = 21)
+label25.grid(column = 0, row = 22)
 
 label26 = tk.Label(text = ">= 30",bg = "orange",fg = "black",font = "none 8 bold")
-label26.grid(column = 1, row = 21)
+label26.grid(column = 1, row = 22)
 
 # Data input text fields:
 
@@ -302,7 +302,27 @@ entry13.grid(column = 1, row = 15)
 # Calculation button program run:
 
 button1 = tk.Button(text = "CALCULATE", font = "none 8 bold",fg = "black", command = calculate)
-button1.grid(column = 0, row = 5)    
+button1.grid(column = 0, row = 5)
+
+# clear from function:
+def clear():
+    entry1.delete(0,"end")
+    entry2.delete(0,"end")
+    entry3.delete(0,"end")
+    entry4.delete(0,"end")
+    entry5.delete(0,"end")
+    entry6.delete(0,"end")
+    entry7.delete(0,"end")
+    entry8.delete(0,"end")
+    entry9.delete(0,"end")
+    entry10.delete(0,"end")
+    entry11.delete(0,"end")
+    entry12.delete(0,"end")
+    entry13.delete(0,"end")    
+
+# clear button:
+button2 = tk.Button(text = "CLEAR",fg = "black", font = "none 8 bold", command = clear)
+button2.grid(column = 0, row = 16)
 
 # exit from function:
 def close_window():
@@ -310,7 +330,7 @@ def close_window():
     exit()
 
 # Exit button:
-button2 = tk.Button(text = "EXIT",fg = "black", font = "none 8 bold", command = close_window)
-button2.grid(column = 0, row = 22)
+button3 = tk.Button(text = "EXIT",fg = "black", font = "none 8 bold", command = close_window)
+button3.grid(column = 0, row = 23)
 
 window.mainloop()
