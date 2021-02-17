@@ -47,11 +47,11 @@ def calculate():
             result = "Underweight"
             entry13.insert(0, result)
             
-        elif ((body_mass_index >= 18.5) and (body_mass_index <= 24.9)):
+        elif ((body_mass_index >= 18.5) and (body_mass_index <= 24.99)):
             result = "Normal weight"
             entry13.insert(0, result)
     
-        elif ((body_mass_index >= 25) and (body_mass_index <= 29.9)):
+        elif ((body_mass_index >= 25) and (body_mass_index <= 29.99)):
             result = "Overweight"
             entry13.insert(0, result)    
     
